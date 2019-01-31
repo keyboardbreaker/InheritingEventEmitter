@@ -2,7 +2,19 @@ var EventEmitter = require('events'); //function constructor
 var util = require('util'); //util library
 
 function Greetr() { // my own function constructor
-    this.greeting = 'Helow World';
+    // event emitter is a function constructor, when 
+    //invoked with new keyword, the "this" variable porints to an empty 
+    //object and it adds on properties and methods
+    //but im overwriting what the "this" keyword is, so mew keyword
+    //doesnt need to be used
+    // basically saying - run function constructor - EventEmitter
+    // and pass the new object that has already been created, then eventemitter
+    //function constructor properties and methods will be added to that new object
+    // super constructor 
+    EventEmitter.call(this);
+    this.greeting = 'Helow World'; //this, is object being created
+    //when i say new and then function constructor
+    //this.(adding property or methods like greeting)
 }
 //any objects created from Greetr, should also have
 //access to the methods and properties on the prototype 
