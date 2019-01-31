@@ -1,14 +1,17 @@
-//byte = 8bits 01010101
+function greet(callback) {
+    console.log('hello');
+    var data = {
+        name: 'john',
+    };
+    callback(data);
+}
 
-//8 bytes, 8 x8 = 64 bits of zeros and ones
-//from v8 JS Engine
-var buffer = new ArrayBuffer(8); 
-var view = new Int32Array(buffer); // a number, integer, stored with 32 bits
-// can only store 2 numbers in view.
-//as each number is 32 bits
+greet((data) => {
+    console.log('callback was invoked');
+    console.log(data);
+});
 
-view[0] = 10;
-view[1] = 15;
-console.log(view);
-
-//cant add another number, wont error but no storage from view[2];
+greet((data) => {
+    console.log('callback was invoked again');
+    console.log(data.name);
+});
